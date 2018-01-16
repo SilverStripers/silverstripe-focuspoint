@@ -1,11 +1,19 @@
 <?php
-
 /**
  * FocusPoint Image extension.
  * Extends Image to allow automatic cropping from a selected focus point.
  *
  * @extends DataExtension
  */
+
+namespace Jonom;
+
+use SilverStripe\Assets\Image_Backend;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\ORM\DataExtension;
+use SilverStripe\View\Requirements;
+
 class FocusPointImage extends DataExtension
 {
     /**
@@ -13,18 +21,18 @@ class FocusPointImage extends DataExtension
      * FocusX: Decimal number between -1 & 1, where -1 is far left, 0 is center, 1 is far right.
      * FocusY: Decimal number between -1 & 1, where -1 is bottom, 0 is center, 1 is top.
      */
-    private static $db = array(
+    private static $db = [
         'FocusX' => 'Double',
         'FocusY' => 'Double',
-    );
+    ];
 
     /**
      * Preserve default behaviour of cropping from center.
      */
-    private static $defaults = array(
+    private static $defaults = [
         'FocusX' => '0',
         'FocusY' => '0',
-    );
+    ];
 
     /**
      * @var bool
@@ -34,6 +42,7 @@ class FocusPointImage extends DataExtension
 
     /**
      * Add FocusPoint field for selecting focus.
+     * @param FieldList $fields
      */
     public function updateCMSFields(FieldList $fields)
     {
@@ -113,7 +122,7 @@ class FocusPointImage extends DataExtension
 
     public function DebugFocusPoint()
     {
-        Requirements::css('focuspoint/css/focuspoint-debug.css');
+        Requirements::css('jonom/silverstripe-focuspoint: client/css/focuspoint-debug.css');
 
         return $this->owner->renderWith('FocusPointDebug');
     }
@@ -143,20 +152,20 @@ class FocusPointImage extends DataExtension
     public function calculateCrop($width, $height)
     {
         // Work out how to crop the image and provide new focus coordinates
-        $cropData = array(
+        $cropData = [
             'CropAxis' => 0,
             'CropOffset' => 0,
-        );
-        $cropData['x'] = array(
+        ];
+        $cropData['x'] = [
             'FocusPoint' => $this->owner->FocusX,
             'OriginalLength' => $this->owner->getWidth(),
             'TargetLength' => round($width),
-        );
-        $cropData['y'] = array(
+        ];
+        $cropData['y'] = [
             'FocusPoint' => $this->owner->FocusY,
             'OriginalLength' => $this->owner->getHeight(),
             'TargetLength' => round($height),
-        );
+        ];
 
         // Avoid divide by zero error
         if (!($cropData['x']['OriginalLength'] > 0 && $cropData['y']['OriginalLength'] > 0)) {
