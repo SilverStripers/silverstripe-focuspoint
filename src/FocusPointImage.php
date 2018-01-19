@@ -122,7 +122,7 @@ class FocusPointImage extends DataExtension
 
     public function DebugFocusPoint()
     {
-        Requirements::css('jonom/silverstripe-focuspoint: client/css/focuspoint-debug.css');
+        Requirements::css('jonom/focuspoint: client/css/focuspoint-debug.css');
 
         return $this->owner->renderWith('FocusPointDebug');
     }
