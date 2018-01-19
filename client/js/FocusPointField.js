@@ -3,6 +3,10 @@
 
 		$('.focuspoint-field .grid').entwine({
 
+			onmatch: function () {
+                this.updateGrid();
+            },
+
 			getCoordField: function(axis) {
 				var fieldSelector = "input[name='Focus" + axis.toUpperCase() + "']";
 				return this.closest('.focuspoint-fieldgroup').find(fieldSelector);
@@ -39,7 +43,12 @@
 
 				// Pass coordinates to form fields
 				this.getCoordField('x').val(focusX);
-				this.getCoordField('y').val(focusY);
+                this.getCoordField('y').val(focusY)
+
+				// trigger input event for react
+                var event = new Event('input', { bubbles: true });
+                this.getCoordField('x')[0].dispatchEvent(event);
+                this.getCoordField('y')[0].dispatchEvent(event);
 
 				// Update focus point grid
 				this.updateGrid();

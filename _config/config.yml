@@ -8,6 +8,9 @@ SilverStripe\Assets\Image:
   extensions:
     - Jonom\FocusPointImage
 
+SilverStripe\AssetAdmin\Forms\ImageFormFactory:
+  extensions:
+    - Jonom\ImageFormFactoryExtension
 
 SilverStripe\AssetAdmin\Controller\AssetAdmin:
   extra_requirements_javascript:

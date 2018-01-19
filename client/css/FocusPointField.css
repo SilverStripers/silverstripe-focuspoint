@@ -30,11 +30,7 @@
   transition: background 0.1s ease;
 }
 
-.focuspoint-fieldgroup .fieldgroup-field  {
+.focuspoint-fieldgroup .form-group  {
 	display: none;
 }
 
-.focuspoint-fieldgroup .fieldgroup-field:first-child,
-.focuspoint-fieldgroup.debug .fieldgroup-field  {
-	display: block;
-}
