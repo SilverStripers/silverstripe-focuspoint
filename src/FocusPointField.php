@@ -43,17 +43,9 @@ class FocusPointField extends FieldGroup
 
     public function __construct(Image $image)
     {
-        // Load necessary scripts and styles
-        Requirements::javascript('silverstripe/admin: thirdparty/jquery/jquery.js');
-        Requirements::javascript('silverstripe/admin: thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
-
-        Requirements::css('jonom/silverstripe-focuspoint: client/js/FocusPointField.js');
-        Requirements::css('jonom/silverstripe-focuspoint: client/css/FocusPointField.css');
-
-        // Create the fields
         $previewImage = $image->FitMax($this->config()->get('max_width'), $this->config()->get('max_height'));
         $fields = array(
-            LiteralField::create('FocusPointGrid', $previewImage->renderWith('Forms/FocusPointField')),
+            LiteralField::create('FocusPointGrid', $previewImage->renderWith('Jonom\\Forms\\FocusPointField')),
             TextField::create('FocusX'),
             TextField::create('FocusY'),
         );

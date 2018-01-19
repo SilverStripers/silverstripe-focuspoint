@@ -1,7 +1,16 @@
 ---
 Name: focuspoint
-After: 'framework/*','cms/*'
+After:
+  - 'framework/*'
 ---
+
 SilverStripe\Assets\Image:
   extensions:
     - Jonom\FocusPointImage
+
+
+SilverStripe\AssetAdmin\Controller\AssetAdmin:
+  extra_requirements_javascript:
+    'jonom/focuspoint: client/js/FocusPointField.js':
+  extra_requirements_css:
+    'jonom/focuspoint: client/css/FocusPointField.css':
