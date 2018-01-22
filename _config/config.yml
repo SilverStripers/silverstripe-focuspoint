@@ -12,7 +12,7 @@ SilverStripe\AssetAdmin\Forms\ImageFormFactory:
   extensions:
     - Jonom\ImageFormFactoryExtension
 
-SilverStripe\AssetAdmin\Controller\AssetAdmin:
+SilverStripe\Admin\LeftAndMain:
   extra_requirements_javascript:
     'jonom/focuspoint: client/js/FocusPointField.js':
   extra_requirements_css:
