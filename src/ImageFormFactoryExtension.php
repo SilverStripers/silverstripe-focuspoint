@@ -16,7 +16,7 @@ class ImageFormFactoryExtension extends Extension
 
     public function updateFormFields(FieldList $fields, $controller, $formName, $context)
     {
-        $fields->addFieldToTab('Editor.FocusPoint', FocusPointField::create($context['Record']));
+        $fields->addFieldToTab('Editor.Details', FocusPointField::create($context['Record']), 'ParentID');
     }
 
 }
