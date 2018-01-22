@@ -31,6 +31,11 @@
 			},
 			onclick: function(e) {
 				var grid = $(this);
+
+				if (grid.closest('.focuspoint-fieldgroup').hasClass('readonly')) {
+					return;
+				}
+
 				var fieldW = grid.width();
 				var fieldH = grid.height();
 
