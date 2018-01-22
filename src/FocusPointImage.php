@@ -9,6 +9,8 @@
 namespace Jonom;
 
 use SilverStripe\Assets\Image_Backend;
+use SilverStripe\Assets\Storage\AssetContainer;
+use SilverStripe\Assets\Storage\DBFile;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\ORM\DataExtension;
