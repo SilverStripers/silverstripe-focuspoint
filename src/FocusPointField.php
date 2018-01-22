@@ -50,12 +50,11 @@ class FocusPointField extends FieldGroup
             TextField::create('FocusY'),
         );
         $this->setName('FocusPoint');
-        $this->setTitle(_t('FocusPointField.FOCUSPOINT','Focus Point'));
         $this->addExtraClass('focuspoint-fieldgroup');
         if (Director::isDev() && $this->config()->get('debug')) {
             $this->addExtraClass('debug');
         }
 
-        parent::__construct($fields);
+        parent::__construct(_t('FocusPointField.FOCUSPOINT','Focus Point'), $fields);
     }
 }
